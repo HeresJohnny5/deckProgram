@@ -1,5 +1,7 @@
 void main() {
-  new Deck();
+  var deck = new Deck();
+  deck.shuffle();
+  print(deck.cardsWithSuit('Diamonds'));
 }
 
 class Deck {
@@ -16,6 +18,20 @@ class Deck {
       }
     }
   }
+
+ toString() {
+    return cards.toString();
+  }
+
+  shuffle() {
+    cards.shuffle();
+  }
+
+  cardsWithSuit(String suit) {
+    return cards.where((card) {
+      return card.suit == suit;
+    });
+  }
 }
 
 class Card {
@@ -23,4 +39,8 @@ class Card {
   String rank;  
 
   Card(this.suit, this.rank); // function constructor shorthand
+
+  toString() {
+    return '$rank of $suit';
+  }
 }
